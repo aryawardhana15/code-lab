@@ -1,0 +1,12 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const enrollments_controller_1 = require("./enrollments.controller");
+const validate_1 = require("../../middlewares/validate");
+const enrollments_validation_1 = require("./enrollments.validation");
+const auth_1 = require("../../middlewares/auth");
+const router = (0, express_1.Router)();
+router.post('/', auth_1.authRequired, (0, validate_1.validate)(enrollments_validation_1.enrollmentSchema), enrollments_controller_1.enrollInCourse);
+router.get('/me', auth_1.authRequired, enrollments_controller_1.getMyEnrollments);
+router.patch('/progress', auth_1.authRequired, (0, validate_1.validate)(enrollments_validation_1.progressUpdateSchema), enrollments_controller_1.updateProgress);
+exports.default = router;

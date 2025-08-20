@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { getCourses } from '../utils/api';
 
 const CourseCard = ({ course }) => {
   return (
@@ -7,8 +8,8 @@ const CourseCard = ({ course }) => {
       <div className="p-6">
         <h3 className="text-xl font-semibold mb-2">{course.title}</h3>
         <p className="text-gray-600 text-sm mb-2">Level: {course.level}</p>
-        <p className="text-gray-600 text-sm mb-2">Mentor: {course.mentor}</p>
-        <p className="text-gray-600 text-sm mb-4">Modul: {course.modules} | Rating: {course.rating} ({course.testimonials})</p>
+        <p className="text-gray-600 text-sm mb-2">Mentor: {course.mentor_name || 'N/A'}</p>
+        <p className="text-gray-600 text-sm mb-4">Modul: {course.module_count || 0} | Rating: {course.average_rating || 'N/A'} ({course.testimonial_count || 0})</p>
         <Link to={`/classes/${course.id}`} className="bg-blue-600 text-white px-4 py-2 rounded-full hover:bg-blue-700">Detail</Link>
       </div>
     </div>
@@ -16,22 +17,43 @@ const CourseCard = ({ course }) => {
 };
 
 const CourseCatalog = () => {
-  // Dummy data for courses
-  const courses = [
-    { id: 1, title: 'Dasar HTML & CSS', level: 'Beginner', mentor: 'Budi', modules: 10, rating: 4.8, testimonials: 120 },
-    { id: 2, title: 'JavaScript Interaktif', level: 'Intermediate', mentor: 'Siti', modules: 15, rating: 4.5, testimonials: 90 },
-    { id: 3, title: 'React.js untuk Pemula', level: 'Beginner', mentor: 'Joko', modules: 12, rating: 4.9, testimonials: 150 },
-  ];
+  const [courses, setCourses] = useState([]);
+  const [filterLevel, setFilterLevel] = useState('All');
+  const [filterStatus, setFilterStatus] = useState('All');
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  const [filterLevel, setFilterLevel] = React.useState('All');
-  const [filterStatus, setFilterStatus] = React.useState('All');
+  useEffect(() => {
+    const fetchCourses = async () => {
+      setLoading(true);
+      setError(null);
+      try {
+        const params = {};
+        if (filterLevel !== 'All') {
+          params.level = filterLevel;
+        }
+        if (filterStatus !== 'All') {
+          params.status = filterStatus; // Assuming backend supports 'berjalan' or 'selesai'
+        }
+        const data = await getCourses(params);
+        setCourses(data);
+      } catch (err) {
+        setError('Failed to fetch courses. Please try again later.');
+        console.error('Error fetching courses:', err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchCourses();
+  }, [filterLevel, filterStatus]);
 
-  const filteredCourses = courses.filter(course => {
-    const levelMatch = filterLevel === 'All' || course.level === filterLevel;
-    // For status, we'll need actual data from backend later. For now, assume all are 'berjalan'
-    const statusMatch = filterStatus === 'All' || filterStatus === 'berjalan'; // Placeholder
-    return levelMatch && statusMatch;
-  });
+  if (loading) {
+    return <div className="container mx-auto py-10 text-center">Loading courses...</div>;
+  }
+
+  if (error) {
+    return <div className="container mx-auto py-10 text-center text-red-500">{error}</div>;
+  }
 
   return (
     <div className="container mx-auto py-10">
@@ -60,9 +82,13 @@ const CourseCatalog = () => {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {filteredCourses.map(course => (
-          <CourseCard key={course.id} course={course} />
-        ))}
+        {courses.length > 0 ? (
+          courses.map(course => (
+            <CourseCard key={course.id} course={course} />
+          ))
+        ) : (
+          <p className="col-span-full text-center text-gray-500">No courses available yet.</p>
+        )}
       </div>
     </div>
   );

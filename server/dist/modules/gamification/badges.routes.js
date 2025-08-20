@@ -1,0 +1,10 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const badges_controller_1 = require("./badges.controller");
+const auth_1 = require("../../middlewares/auth");
+const router = (0, express_1.Router)();
+router.get('/badges', badges_controller_1.getBadges);
+router.post('/admin/badges/assign', auth_1.authRequired, (0, auth_1.roleRequired)(['admin']), badges_controller_1.assignBadge);
+router.post('/admin/badges/revoke', auth_1.authRequired, (0, auth_1.roleRequired)(['admin']), badges_controller_1.revokeBadge);
+exports.default = router;

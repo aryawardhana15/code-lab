@@ -4,14 +4,14 @@ import jwt from 'jsonwebtoken';
 // Define roles based on your database schema for the 'users' table
 type Role = 'user' | 'admin' | 'mentor'; // Adjust as per your actual roles
 
-interface AuthRequest extends Request {
+export interface CustomRequest extends Request {
   user?: {
     id: number;
     role: Role;
   };
 }
 
-export const authRequired = (req: AuthRequest, res: Response, next: NextFunction) => {
+export const authRequired = (req: CustomRequest, res: Response, next: NextFunction) => {
   const authHeader = req.headers.authorization;
 
   if (!authHeader || !authHeader.startsWith('Bearer ')) {
@@ -29,7 +29,7 @@ export const authRequired = (req: AuthRequest, res: Response, next: NextFunction
   }
 };
 
-export const roleRequired = (roles: Role[]) => (req: AuthRequest, res: Response, next: NextFunction) => {
+export const roleRequired = (roles: Role[]) => (req: CustomRequest, res: Response, next: NextFunction) => {
   if (!req.user) {
     return res.status(403).json({ message: 'Access denied. User not authenticated.' });
   }
