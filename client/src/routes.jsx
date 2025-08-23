@@ -1,6 +1,6 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import App from './App'; // This will be our main layout component later
+import App from './App'; 
 import LandingPage from './pages/LandingPage';
 import CourseCatalog from './pages/CourseCatalog';
 import CourseDetail from './pages/CourseDetail';
@@ -18,6 +18,7 @@ import LiveSessionList from './features/schedules/LiveSessionList';
 import DashboardMentor from './features/dashboard/DashboardMentor'; // Import DashboardMentor
 import CourseManagement from './features/mentor/CourseManagement'; // Import CourseManagement
 import MaterialManagement from './features/mentor/MaterialManagement'; // Import MaterialManagement
+import GradeSubmission from './features/mentor/GradeSubmission'; // Import GradeSubmission
 import AdminDashboard from './features/admin/AdminDashboard';
 import UserManagement from './features/admin/UserManagement';
 import AdminCourseManagement from './features/admin/CourseManagement';
@@ -25,6 +26,7 @@ import AdminMaterialManagement from './features/admin/MaterialManagement';
 import AdminLiveSessionManagement from './features/admin/LiveSessionManagement';
 import AdminTestimonialManagement from './features/admin/TestimonialManagement';
 import AdminBadgeManagement from './features/admin/BadgeManagement';
+import ForumModeration from './features/mentor/ForumModeration'; // Import ForumModeration
 import AdminForumModeration from './features/admin/ForumModeration';
 import AdminProjectModeration from './features/admin/ProjectModeration';
 import ReportExport from './features/admin/ReportExport';

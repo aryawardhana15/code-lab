@@ -104,7 +104,7 @@ export const gradeSubmissionService = async (submissionId: number, gradeData: Gr
     const currentPoints = (userPointsRows as any[])[0]?.total_points || 0;
 
     // Only update if new score is higher or if it's the first score
-    if (score > currentPoints || userPointsRows.length === 0) {
+    if (score > currentPoints || (userPointsRows as any[]).length === 0) {
       await pool.execute(
         `INSERT INTO leaderboard (student_id, total_points) VALUES (?, ?)
          ON DUPLICATE KEY UPDATE total_points = ?`,
