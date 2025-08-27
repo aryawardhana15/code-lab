@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_BASE_URL = 'http://localhost:5000/api/v1'; // Backend runs on port 5000
+const API_BASE_URL = 'http://localhost:8080/api/v1'; 
 
 const api = axios.create({
   baseURL: API_BASE_URL,
@@ -42,3 +42,6 @@ export const getCourses = async (params = {}) => {
 
 // Add other API calls as needed (e.g., auth, user-specific, etc.)
 // For now, focusing on public landing page and course catalog data.
+
+
+

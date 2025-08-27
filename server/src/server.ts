@@ -6,7 +6,8 @@ import pool from './config/db'; // Import the MySQL connection pool
 
 dotenv.config({ path: './.env' });
 
-const PORT = process.env.PORT || 5000;
+console.log(`DEBUG: process.env.PORT is ${process.env.PORT}`);
+const PORT = process.env.PORT || 8080;
 const httpServer = createServer(app);
 const io = new SocketIOServer(httpServer, {
   cors: {
@@ -59,6 +60,8 @@ const startServer = async () => {
     process.exit(1);
   }
 };
+
+console.log(`Express server is attempting to start on port ${PORT}`);
 
 startServer();
 
