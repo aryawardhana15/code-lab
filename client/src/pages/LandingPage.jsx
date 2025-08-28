@@ -24,7 +24,7 @@ const LandingPage = () => {
   const projectsRef = useRef(null)
   const scrollTimeoutRef = useRef(null)
 
-  // <CHANGE> Enhanced mobile detection and scroll handling
+  // Enhanced mobile detection and scroll handling
   useEffect(() => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768)
@@ -66,7 +66,7 @@ const LandingPage = () => {
     }
   }, [isMobile])
 
-  // <CHANGE> Advanced touch gesture handling with momentum
+  // Advanced touch gesture handling with momentum
   const handleTouchStart = useCallback((e) => {
     setTouchEnd(null)
     setTouchStart(e.targetTouches[0].clientX)
@@ -94,7 +94,7 @@ const LandingPage = () => {
     }
   }, [touchStart, touchEnd, activeTab])
 
-  // <CHANGE> Enhanced data fetching with error handling
+  // Enhanced data fetching with error handling
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -183,21 +183,21 @@ const LandingPage = () => {
             id: 1,
             title: "E-commerce Website",
             description: "Website toko online lengkap dengan fitur keranjang belanja, pembayaran, dan manajemen produk.",
-            screenshot_url: "https://via.placeholder.com/400x250/FF5733/FFFFFF?text=E-commerce",
+            screenshot_url: "https://picsum.photos/400/250?random=1",
             demo_url: "#"
           },
           {
             id: 2,
             title: "Social Media Dashboard",
             description: "Dashboard untuk memantau aktivitas media sosial dengan grafik interaktif dan notifikasi real-time.",
-            screenshot_url: "https://via.placeholder.com/400x250/33FF57/FFFFFF?text=Social+Dashboard",
+            screenshot_url: "https://picsum.photos/400/250?random=2",
             demo_url: "#"
           },
           {
             id: 3,
             title: "Task Management App",
             description: "Aplikasi manajemen tugas dengan fitur drag-and-drop, prioritas, dan kolaborasi tim.",
-            screenshot_url: "https://via.placeholder.com/400x250/3357FF/FFFFFF?text=Task+App",
+            screenshot_url: "https://picsum.photos/400/250?random=3",
             demo_url: "#"
           }
         ])
@@ -206,7 +206,7 @@ const LandingPage = () => {
     fetchData()
   }, [])
 
-  // <CHANGE> Advanced intersection observer with staggered animations
+  // Advanced intersection observer with staggered animations
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -236,7 +236,7 @@ const LandingPage = () => {
     return () => observer.disconnect()
   }, [])
 
-  // <CHANGE> Auto-rotating testimonials with pause on interaction
+  // Auto-rotating testimonials with pause on interaction
   useEffect(() => {
     if (testimonials.length > 0) {
       const interval = setInterval(() => {
@@ -246,7 +246,7 @@ const LandingPage = () => {
     }
   }, [testimonials])
 
-  // <CHANGE> Enhanced typing effect with cursor blink
+  // Enhanced typing effect with cursor blink
   const [typedText, setTypedText] = useState("")
   const [showCursor, setShowCursor] = useState(true)
   const fullText = "Belajar Coding Interaktif, Wujudkan Proyek Impianmu"
@@ -269,7 +269,7 @@ const LandingPage = () => {
     return () => clearInterval(timer)
   }, [])
 
-  // <CHANGE> Mobile project carousel with auto-advance
+  // Mobile project carousel with auto-advance
   useEffect(() => {
     if (isMobile && projects.length > 0) {
       const interval = setInterval(() => {
@@ -300,7 +300,7 @@ const LandingPage = () => {
     ],
   }
 
-  // <CHANGE> Smooth scroll to section function
+  // Smooth scroll to section function
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId)
     if (element) {
@@ -310,7 +310,7 @@ const LandingPage = () => {
 
   return (
     <div className="overflow-x-hidden relative">
-      {/* <CHANGE> Floating Action Button for mobile */}
+      {/* Floating Action Button for mobile */}
       {isMobile && showFloatingButton && (
         <button
           onClick={() => scrollToSection('learning-paths')}
@@ -325,12 +325,12 @@ const LandingPage = () => {
         </button>
       )}
 
-      {/* <CHANGE> Enhanced Hero Section with advanced parallax and mobile optimizations */}
+      {/* Enhanced Hero Section with advanced parallax and mobile optimizations */}
       <section 
         ref={heroRef}
         className="relative bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-800 text-white py-20 md:py-32 overflow-hidden min-h-screen flex items-center"
       >
-        {/* <CHANGE> Advanced parallax background with multiple layers */}
+        {/* Advanced parallax background with multiple layers */}
         <div
           className="absolute inset-0 overflow-hidden"
           style={{
@@ -342,7 +342,7 @@ const LandingPage = () => {
           <div className="absolute top-40 left-1/2 w-80 h-80 bg-indigo-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse delay-500"></div>
         </div>
 
-        {/* <CHANGE> Interactive floating code elements with mouse tracking */}
+        {/* Interactive floating code elements with mouse tracking */}
         <div
           className="absolute inset-0 overflow-hidden pointer-events-none"
           style={{
@@ -425,7 +425,7 @@ const LandingPage = () => {
             </Link>
           </div>
 
-          {/* <CHANGE> Enhanced stats with mobile-specific animations */}
+          {/* Enhanced stats with mobile-specific animations */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 max-w-4xl mx-auto">
             {[
               { value: "10K+", label: "Siswa Aktif", color: "text-pink-400", delay: 0 },
@@ -454,7 +454,7 @@ const LandingPage = () => {
         </div>
       </section>
 
-      {/* <CHANGE> Enhanced Learning Paths with advanced mobile interactions */}
+      {/* Enhanced Learning Paths with advanced mobile interactions */}
       <section className="py-20 bg-gradient-to-br from-slate-50 to-blue-50" id="learning-paths" data-animate>
         <div className="container mx-auto px-6">
           <div className="text-center mb-16" data-stagger>
@@ -466,7 +466,7 @@ const LandingPage = () => {
             </p>
           </div>
 
-          {/* <CHANGE> Enhanced tab navigation with swipe gestures */}
+          {/* Enhanced tab navigation with swipe gestures */}
           <div className="flex justify-center mb-12" data-stagger>
             <div
               className="bg-white rounded-2xl p-2 shadow-xl border border-gray-100 relative overflow-hidden"
@@ -474,7 +474,7 @@ const LandingPage = () => {
               onTouchMove={handleTouchMove}
               onTouchEnd={handleTouchEnd}
             >
-              {/* <CHANGE> Active tab indicator with smooth animation */}
+              {/* Active tab indicator with smooth animation */}
               <div
                 className="absolute top-2 bottom-2 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-xl transition-all duration-300 ease-out"
                 style={{
@@ -507,7 +507,7 @@ const LandingPage = () => {
             </div>
           </div>
 
-          {/* <CHANGE> Enhanced course cards with mobile-specific layouts */}
+          {/* Enhanced course cards with mobile-specific layouts */}
           <div className={`${isMobile ? "space-y-6" : "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"}`}>
             {learningPaths[activeTab].map((course, index) => (
               <div
@@ -525,7 +525,7 @@ const LandingPage = () => {
                 }}
                 onTouchStart={() => isMobile && setActiveCard(index)}
               >
-                {/* <CHANGE> Gradient background overlay */}
+                {/* Gradient background overlay */}
                 <div className={`absolute inset-0 bg-gradient-to-br ${course.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300`} />
                 
                 <div
@@ -540,7 +540,7 @@ const LandingPage = () => {
                   {course.name}
                 </h3>
 
-                {/* <CHANGE> Expandable content for mobile */}
+                {/* Expandable content for mobile */}
                 <div
                   className={`transition-all duration-300 ${
                     isMobile && activeCard !== index ? "max-h-20 overflow-hidden" : "max-h-none"
@@ -567,7 +567,7 @@ const LandingPage = () => {
                       <span>📁</span> {course.projects} proyek
                     </div>
 
-                    {/* <CHANGE> Additional info for expanded mobile cards */}
+                    {/* Additional info for expanded mobile cards */}
                     {isMobile && activeCard === index && (
                       <div className="mt-4 p-4 bg-gradient-to-r from-gray-50 to-blue-50 rounded-lg animate-fade-in border-l-4 border-purple-400">
                         <p className="text-sm text-gray-700 mb-3 font-medium">
@@ -607,7 +607,7 @@ const LandingPage = () => {
         </div>
       </section>
 
-      {/* <CHANGE> Enhanced testimonials with mobile carousel */}
+      {/* Enhanced testimonials with mobile carousel */}
       <section
         className="py-20 bg-gradient-to-br from-purple-900 to-indigo-900 text-white"
         id="testimonials"
@@ -619,7 +619,7 @@ const LandingPage = () => {
           {testimonials.length > 0 ? (
             <div className="max-w-4xl mx-auto" data-stagger>
               <div className="bg-white/10 backdrop-blur-lg rounded-3xl p-8 md:p-12 text-center border border-white/20 relative overflow-hidden">
-                {/* <CHANGE> Animated background pattern */}
+                {/* Animated background pattern */}
                 <div className="absolute inset-0 opacity-5">
                   <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-pink-500 to-purple-500 animate-pulse" />
                 </div>
@@ -643,7 +643,7 @@ const LandingPage = () => {
                     </div>
                   </div>
 
-                  {/* <CHANGE> Enhanced pagination dots */}
+                  {/* Enhanced pagination dots */}
                   <div className="flex justify-center gap-2">
                     {testimonials.map((_, index) => (
                       <button
@@ -666,7 +666,7 @@ const LandingPage = () => {
         </div>
       </section>
 
-      {/* <CHANGE> Enhanced project showcase with mobile carousel */}
+      {/* Enhanced project showcase with mobile carousel */}
       <section className="py-20 bg-white" id="projects" data-animate>
         <div className="container mx-auto px-6">
           <div className="text-center mb-16" data-stagger>
@@ -679,7 +679,7 @@ const LandingPage = () => {
             </p>
           </div>
 
-          {/* <CHANGE> Mobile-optimized project display */}
+          {/* Mobile-optimized project display */}
           <div className={`${isMobile ? "relative" : "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10"}`}>
             {isMobile ? (
               // Mobile carousel view
@@ -784,7 +784,7 @@ const LandingPage = () => {
             )}
           </div>
 
-          {/* <CHANGE> Mobile carousel indicators */}
+          {/* Mobile carousel indicators */}
           {isMobile && projects.length > 0 && (
             <div className="flex justify-center mt-8 gap-2">
               {projects.map((_, index) => (
@@ -803,8 +803,6 @@ const LandingPage = () => {
         </div>
       </section>
 
-      {/* ... existing code ... */}
-      
       {/* Highlight Kurikulum */}
       <section className="curriculum-highlight py-16 md:py-24 bg-blue-50" data-animate>
         <div className="container mx-auto px-6">
@@ -945,8 +943,8 @@ const LandingPage = () => {
         </div>
       </section>
 
-      {/* <CHANGE> Enhanced CSS with mobile-specific optimizations */}
-      <style jsx>{`
+      {/* Enhanced CSS with mobile-specific optimizations */}
+      <style>{`
         @keyframes float {
           0%, 100% { transform: translateY(0px); }
           50% { transform: translateY(-20px); }

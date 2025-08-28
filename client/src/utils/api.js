@@ -1,6 +1,7 @@
+// This file contains all API helpers and the single source of API_BASE_URL for maintainability.
 import axios from 'axios';
 
-const API_BASE_URL = 'http://localhost:8080/api/v1'; 
+export const API_BASE_URL = 'http://localhost:8080/api';
 
 const api = axios.create({
   baseURL: API_BASE_URL,
@@ -39,8 +40,7 @@ export const getCourses = async (params = {}) => {
     throw error;
   }
 };
-
-// Add other API calls as needed (e.g., auth, user-specific, etc.)
+// TODO: Add more API helpers here for leaderboard, auth, user-specific, etc. to ensure all API calls are consistent.
 // For now, focusing on public landing page and course catalog data.
 
 
