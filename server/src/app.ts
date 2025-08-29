@@ -9,7 +9,6 @@ import cookieParser from 'cookie-parser';
 
 const app = express();
 
-// Security Middlewares
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
