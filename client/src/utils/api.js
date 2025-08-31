@@ -1,7 +1,8 @@
 // This file contains all API helpers and the single source of API_BASE_URL for maintainability.
-import axios from 'axios';
+// For cloud dev, use the public backend URL:
+export const API_BASE_URL = 'https://8080-firebase-code-lab-1756655233115.cluster-ulqnojp5endvgve6krhe7klaws.cloudworkstations.dev/api';
 
-export const API_BASE_URL = 'http://localhost:8080/api';
+import axios from 'axios';
 
 const api = axios.create({
   baseURL: API_BASE_URL,
@@ -41,7 +42,6 @@ export const getCourses = async (params = {}) => {
   }
 };
 // TODO: Add more API helpers here for leaderboard, auth, user-specific, etc. to ensure all API calls are consistent.
-// For now, focusing on public landing page and course catalog data.
 
 
 

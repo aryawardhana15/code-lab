@@ -5,8 +5,9 @@ import cors from 'cors';
 const app = express();
 
 // Middleware
+// WARNING: For development only! Restrict origin in production.
 app.use(cors({
-  origin: 'http://localhost:5173',
+  origin: true, // Allow all origins for dev
   credentials: true,
 }));
 app.use(express.json());
