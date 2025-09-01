@@ -150,6 +150,33 @@ app.get('/api/leaderboard', (req, res) => {
   res.json(mockLeaderboard);
 });
 
+// Mock auth endpoints
+app.post('/api/auth/register', (req, res) => {
+  // Accept any registration data and return a fake success response
+  res.json({
+    message: 'Registration successful!',
+    user: {
+      id: Date.now(),
+      name: req.body.name,
+      email: req.body.email,
+    },
+    token: 'mock-jwt-token',
+  });
+});
+
+app.post('/api/auth/login', (req, res) => {
+  // Accept any login data and return a fake success response
+  res.json({
+    message: 'Login successful!',
+    user: {
+      id: 1,
+      name: 'Mock User',
+      email: req.body.email,
+    },
+    token: 'mock-jwt-token',
+  });
+});
+
 // Health check
 app.get('/api/health', (req, res) => {
   res.json({ status: 'OK', message: 'Mock server is running' });
