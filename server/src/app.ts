@@ -31,7 +31,7 @@ app.use(limiter);
 // Logging
 app.use(morgan('dev'));
 
-// Basic route
+
 import routes from './routes';
 
 app.use('/api', routes);
