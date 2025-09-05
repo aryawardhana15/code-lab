@@ -23,6 +23,7 @@ export const createCourse = async (req: Request, res: Response, next: NextFuncti
   }
 };
 
+
 export const getAllCourses = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { level, published } = req.query;
